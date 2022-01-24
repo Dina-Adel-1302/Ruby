@@ -110,8 +110,6 @@ puts("-------*----------*---------------*----------", "")
 # VII.Gets hash a new hash with uniq employees (remove duplicate)
 puts("QuestionVII: hash with uniq employees NAME.", "")
 
-#I have put the first element only, because uniq_employees raises exception if it is empty, 
-#when I iterate it with .each_value
 uniq_employees = Hash.new
 
 Employees.each do |key, value|
