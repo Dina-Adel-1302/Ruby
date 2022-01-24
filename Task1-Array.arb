@@ -1,0 +1,111 @@
+# Arrays/iterator and reducers Exercise
+# A.Write a Ruby program for each of the following to get it out of an array of integers.
+#ex:[1,2,3,4,5] a.Max #=> 5 b.Min #=> 1 c.Count #=>5 d.Sum #=> 15 e.Multiplication of all elements #=> 120
+puts("QuestionA:")
+arr = [1,2,3,4,5]
+puts("arr is: #{arr}")
+puts("maximum of arr: #{arr.max}")
+puts("minimum of arr: #{arr.min}")
+puts("array count is: #{arr.count}")
+
+sum = 0 
+sum = arr.reduce(0) {|sum, n| sum + n}
+puts("the sum of arr is: #{sum}")
+
+mul = 1
+mul = arr.reduce(mul) {|mul, n| mul * n}
+puts("Multiplication of arr is: #{mul}")
+puts("-------*----------*---------------*----------")
+# B.Write a Ruby program to check whether a value exists in an array using array APIs.
+puts("QuestionB:")
+puts("Does -1 exists in arr? #{arr.include?(-1)}")
+puts("-------*----------*---------------*----------")
+#C.Write a ruby program that gets the count of each element in the array.
+#ex: if a=[1,1,2,2,3,3,3] 
+#the output will be result=[[1,2],[2,2],[3,3]]
+puts("QuestionC:")
+puts("arr = #{arr = [1,1,2,2,3,3,3] }")
+arr_unique = arr.uniq 
+result = []
+arr_unique.each do |uniq_elem|
+    result.push([uniq_elem, arr.count(uniq_elem)])
+end
+puts("result of arr = #{result}")
+puts("-------*----------*---------------*----------")
+
+#D.Write two Ruby programs to compute the sum of elements in a given array of integers using iterators/reducers
+puts("QuestionD: ")
+puts("arr = #{arr = [1,2,3,4,5]}")
+sum = 0
+arr.each do |elem|
+    sum = sum + elem
+end
+puts("sum using iterator = #{sum}")
+
+sum = 0 
+sum = arr.reduce(0) {|sum, n| sum + n}
+puts("sum using reducer = #{sum}")
+puts("-------*----------*---------------*----------")
+
+#E.Write a Ruby program to remove duplicate elements from a given array using arrayAPIs.
+puts("QuestionE:")
+arr = ["Sara", "Nora", "Saeed", "Ruby", "Saeed", "Saeed", "Saeed", "Saeed", "Nora", "Sara", "Sara", "Ruby", "Ruby" ]
+puts("arr = #{arr}")
+puts("arr without duplicates: #{arr.uniq}")
+puts("-------*----------*---------------*----------")
+
+#F.Write a Ruby program to create a new array of length 2 
+#containing the middle two elements from a given array of integers
+#of even length 2 or more using arrays APIs
+puts("QuestionF:")
+puts("arr = #{arr = [1,2,3,4,5,6]}")
+middle_index = arr.length/2-1
+new_arr = []
+new_arr.push(arr[middle_index], arr[middle_index+1])
+puts("new_arr = #{new_arr}")
+puts("-------*----------*---------------*----------")
+
+#G.Write a Ruby program to find the largest value from a given array of integers of odd length. 
+#The array length will be a least 1 using array APIs.
+puts("QuestionG:")
+puts("arr = #{arr = [12,0,30,78,47,15,-6]}")
+puts("Largest value in arr: #{arr.max}")
+puts("-------*----------*---------------*----------")
+
+#H.Write a Ruby program to compute the sum of the numbers of a given array 
+#except the number 17 and numbers that come immediately after a 17. Return 0 for an empty array using array APIs.
+puts("QuestionH:")
+puts("arr = #{arr = [1,1,17]}")
+sum = 0
+arr.each do |elem|
+    unless elem == 17
+        sum = sum + elem
+    end
+end
+puts("sum of arr except 17 = #{sum}")
+
+puts("arr = #{arr = []}")
+sum = 0
+arr.each do |elem|
+    unless elem == 17
+        sum = sum + elem
+    end
+end
+puts("sum of arr except 17 = #{sum}")
+puts("-------*----------*---------------*----------")
+
+#I.Write a Ruby program to check whether all items are identical in a given array using array APIs.
+puts("QuestionI:")
+puts("arr = #{arr = [1,1,1]}")
+is_identical = true
+unless arr.uniq.length == 1 
+    is_identical = false
+end
+puts("Is all elements identical? #{is_identical}")
+puts("-------*----------*---------------*----------")
+
+#J.Given an input text output it transposed.Roughly explained, the transpose of a matrix:ABCDEF is given by:ADBECF
+puts("QuestionJ:")
+puts("arr = #{arr = [["A", "B", "C"], ["D", "E", "F"]]}")
+puts("arr.transpose = #{arr.transpose}")
+puts("-------*----------*---------------*----------")
