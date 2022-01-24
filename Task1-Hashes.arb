@@ -94,27 +94,41 @@ Employees.each do |key,value|
         puts("name: #{value[:name]}", "salary: #{value[:salary]}", "id: #{key}" )
     end
 end
-puts("-------*----------*---------------*----------")
+puts("-------*----------*---------------*----------","")
 
 # VI.Remove employees with nil salary.
-puts("QuestionVI: Remove employees with nil salary.")
-employees_without_nil = []
+puts("QuestionVI: Remove employees with nil salary.","")
+employees_without_nil = Hash.new
 Employees.each do |key, value|
-    employees_without_nil.push(Employees[key])
-    if value[:salary].to_i == 0 
-        employees_without_nil.delete(key)
+    if value[:salary].to_i != 0 
+        employees_without_nil[key] = {name:value[:name], salary: value[:salary]}
     end
 end
-p employees_without_nil
-puts("-------*----------*---------------*----------")
+puts("#{employees_without_nil}","")
+puts("-------*----------*---------------*----------", "")
 
 # VII.Gets hash a new hash with uniq employees (remove duplicate)
-# puts("QuestionVII: hash with uniq employees.")
-# uniq_employees = []
-# Employees.each do |key, value|
-#     if uniq_employees.include?(value[:name]) == false
-#         uniq_employees.push(Employees[key])
-#     end
-# end
-# puts("Unique employees = #{uniq_employees}")
-# puts("-------*----------*---------------*----------")
+puts("QuestionVII: hash with uniq employees NAME.", "")
+
+#I have put the first element only, because uniq_employees raises exception if it is empty, 
+#when I iterate it with .each_value
+uniq_employees = Hash.new
+
+Employees.each do |key, value|
+    duplicate = false
+
+    #foreach employee element, traverse all uniq_employees to check for duplicate name
+    uniq_employees.each_value do |uniq_name|
+        if uniq_name[:name] == value[:name]
+            duplicate = true 
+            break
+        end
+    end
+
+    if duplicate == false
+        uniq_employees[key] = {name:value[:name], salary: value[:salary]}
+    end
+    
+end
+puts("Unique employees NAME = #{uniq_employees}")
+puts("-------*----------*---------------*----------")
