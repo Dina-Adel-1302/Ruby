@@ -1,0 +1,142 @@
+# A.Write a Ruby program to check three given integers 
+# (a:smallest,b,c:largest) and return true if the three values are equally spaced, 
+# so the difference between a and b is th same as the difference between b and c.
+a = 5
+b = 10
+c = 15
+
+if b-a == c-b 
+    puts("QuestionA: true")
+else
+    puts("QuestionA: false")
+end
+
+# B.Write a Ruby program to check three given integers a, b, c 
+# and return true if one of b or c is close (difference out of a by at most 1), 
+# while the other is far, difference from both other values by 3 or more.
+a = 3
+b = 25
+c = 49
+
+if b-a >= 1 
+    if b-c >= 3 || c-b >= 3
+        puts("QuestionB: true")
+    end
+elsif c-a >= 1 
+    if c-b >= 3 || b-c >= 3
+        puts("QuestionB: true")
+    end
+end
+
+# C.Write a Ruby program to check two given integers, 
+# each in the range 10..99, return true if there is a digit that appears in both numbers.
+String a = "12"
+String b = "24"
+
+if a[0] == b[0] || 
+    a[0] == b[1] ||
+    a[1] == b[0] || 
+    a[1] == b[1]
+    puts("QuestionC: true")
+end
+
+# D.Write a Ruby program to check two given integers
+# and return true if either one is 11 or their sum or difference is 11 otherwise return false.
+a = 8 
+b = 9
+
+if a == 11 ||
+    b == 11 || 
+    a+b == 11 ||
+    a-b == 11 ||
+    b-a == 11
+    puts("QuestionD: True")
+else
+    puts("QuestionD: false")
+end
+
+# E.Write a Ruby program to check whether 2 strings start and end with different letters 
+# and both of them doesn’t include letter “x”.
+s1 = "Dina"
+s2 = "Ruby"
+if s1[0] != s2[0] && 
+    s1[-1] != s2[-1] &&
+    s1.index("x") == nil &&
+    s2.index("x") == nil 
+    puts("QuestionE: The strings #{s1} and #{s2} start and end with different letters and both of them doesn’t include letter “x” ")
+end
+
+#F.Write a Ruby program that checks whether a string contains a vowel.
+vowels = ['a','e','i','o','u']
+String s = "Hello"
+flag = false
+len = s.length
+
+vowels.each do |v|
+    i=0
+    loop do 
+        if s[i] == v 
+            puts("QuestionF: The string #{s} contains vowels") 
+            flag = true
+            
+            break
+        end
+        if i == len 
+            break
+        end
+        i = i + 1
+    end
+    if flag
+        break
+    end
+end 
+
+unless flag
+    puts("QuestionF: The string #{s} does not contain vowels") 
+    
+end
+
+# G.Write a Ruby program that keeps getting an integer at the console less than 100 score from the user, 
+# and exits when he inserts -1.
+#If he inserted a number out of range, print the message : ”Please insert a score from 0 to 100”.
+# Your program shall print out the corresponding evaluation as follows:
+# 0-49:fail
+# 50-60:pass
+# 60-70:good
+# 70-80:very good
+# 80-90:excellent
+# 90-100:incredible
+puts("QuestionG:")
+scores = []
+loop do 
+
+    puts("Please enter a score 0-100, -1 to exit: ")
+    user_input = gets.chomp
+    user_input = user_input.to_i
+
+    if user_input == -1
+        break
+    elsif user_input <= 100 && user_input >= 0
+        scores.push(user_input)
+    else
+        puts("wrong input.")
+        next
+    end
+end
+
+evaluation = 0
+evaluation = scores.reduce(0) {|evaluation, n| evaluation + n}
+
+if evaluation >= 0 && evaluation <= 49
+    puts("you failed. Don't give up :)")
+elsif evaluation >= 50 && evaluation <= 60
+    puts("you passed :)")
+elsif evaluation >= 61 && evaluation <= 70
+    puts("your total score is: good :)")
+elsif evaluation >= 71 && evaluation <= 80
+    puts("your total score is: very good :)")
+elsif evaluation >= 81 && evaluation <= 90
+    puts("your total score is: Excellent :)")
+elsif evaluation >= 91 && evaluation <= 100
+    puts("you are incredible ^____^ ")
+end
