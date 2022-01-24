@@ -1,0 +1,37 @@
+#Remove “Hello” , print the text
+String text = "Hello Ruby World"
+text = text.sub("Hello","")
+p text
+
+#Add “Welcome to” to the beginning, print the text
+text = text.insert(0, "Welcome to")
+p text
+
+#Replace “World” by your name, print the text
+text = text.sub("World","Dina")
+p text
+
+# Put your name between quotes , print the text
+# ex:Welcome to Ruby “Ahmed”
+text = text.sub("Dina","\"Dina\"")
+p text
+
+#Insert a “,” after the word “Ruby”, print the text
+text = text.insert(text.index("Ruby")+"Ruby".length, ",")
+p text
+
+#Insert a tab after the coma, print the text
+text = text.insert(text.index(",")+1, "    " )
+p text
+
+#Count the number of characters, print the count
+len = text.length
+puts("Length of text is: #{len}")
+
+#Count number of spaces, print the count
+len = text.count(" ")
+puts("count of spaces in text is: #{len}")
+
+#Replace the text spaces by “-”, print the text
+text = text.gsub(" ", "-")
+p text
