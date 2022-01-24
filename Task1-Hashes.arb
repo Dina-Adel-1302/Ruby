@@ -1,0 +1,120 @@
+#Hashes/iterators and reducers Exercise
+#A.For the following hash:
+Employees = {10=>{name:"Ahmed",salary:1000},
+             21=>{name:"Mohamed",salary:2000},
+             113=>{name:"Mahmoud",salary:5000},
+             4=>{name:"Yassin",salary:3000},
+             52=>{name:"Taha",salary:4000},
+             102=>{name:"Noora",salary:nil},
+             64=>{name:"Sara",salary:5000},
+             37=>{name:"Nadine",salary:5000},
+             88=>{name:"Doaa",salary:4000},
+             90=>{name:"Iman",salary:4000},
+             103=>{name:"Noora",salary:1000},
+             12=>{name:"Kholod",salary:nil},
+            15=>{name:"Emad",salary:nil},
+            38=>{name:"Nadine",salary:5000},
+            89=>{name:"Doaa",salary:4000},
+            91=>{name:"Iman",salary:4000},
+            104=>{name:"Khadija",salary:1000},
+            17=>{name:"Kholod",salary:nil},
+            14=>{name:"Emad",salary:nil}}
+# Write a program for each of the following that
+
+# I.Gets all employees name
+puts("QuestionI: Gets all employees name")
+Employees.each_value do |value|
+    puts("name: #{value[:name]}")
+end
+puts("-------*----------*---------------*----------")
+
+# II.Gets all employee IDs ex:[10,21,113,…]
+puts("QuestionII: Gets all employee IDs")
+Employees.each_key do |key|
+    puts("ID: #{key}")
+end
+puts("-------*----------*---------------*----------")
+
+# III.Gets employees with the highest salary in an array along their Id
+#     ex::[{name:”Mahmoud”,salary:5000,id:113}{name:”Sara”,salary:5000,id:64},…]
+puts("QuestionIII: ")
+
+#traverse to find highest salary
+highest_salary = 0
+Employees.each_value do |value|
+    if value[:salary].to_i > highest_salary
+        highest_salary = value[:salary].to_i
+    end
+end
+
+puts("Employees with the highest salary: ")
+Employees.each do |key,value|
+    if value[:salary].to_i == highest_salary
+        puts("name: #{value[:name]}", "salary: #{value[:salary]}", "id: #{key}" )
+    end
+end
+puts("-------*----------*---------------*----------")
+
+# IV.Gets employees with lowest salary in a hash keeping their IDs  
+#     Ex:{10:{name:”Ahmed”,salary:1000},103 {name:”Khadija”,salary:1000},.…}
+puts("QuestionIV: ")
+
+#traverse to find lowest salary
+lowest_salary = highest_salary
+Employees.each_value do |value|
+    if value[:salary].to_i > 0 && value[:salary].to_i < lowest_salary
+        lowest_salary = value[:salary].to_i
+    end
+end
+
+puts("Employees with the lowest salary: ")
+Employees.each do |key,value|
+    if value[:salary].to_i == lowest_salary
+        puts("name: #{value[:name]}", "salary: #{value[:salary]}", "id: #{key}" )
+    end
+end
+puts("-------*----------*---------------*----------")
+
+# V.Gets average salaries
+puts("QuestionV: ")
+
+#make an array of all unique salaries
+average_salary = []
+Employees.each_value do |value|
+    if value[:salary].to_i != 0 && !average_salary.include?(value[:salary].to_i)
+        average_salary.push(value[:salary].to_i)
+    end
+end
+average_salary = average_salary.sort
+average_salary = average_salary[average_salary.length/2]
+
+puts("average salary: #{average_salary}")
+Employees.each do |key,value|
+    if value[:salary].to_i == average_salary
+        puts("name: #{value[:name]}", "salary: #{value[:salary]}", "id: #{key}" )
+    end
+end
+puts("-------*----------*---------------*----------")
+
+# VI.Remove employees with nil salary.
+puts("QuestionVI: Remove employees with nil salary.")
+employees_without_nil = []
+Employees.each do |key, value|
+    employees_without_nil.push(Employees[key])
+    if value[:salary].to_i == 0 
+        employees_without_nil.delete(key)
+    end
+end
+p employees_without_nil
+puts("-------*----------*---------------*----------")
+
+# VII.Gets hash a new hash with uniq employees (remove duplicate)
+# puts("QuestionVII: hash with uniq employees.")
+# uniq_employees = []
+# Employees.each do |key, value|
+#     if uniq_employees.include?(value[:name]) == false
+#         uniq_employees.push(Employees[key])
+#     end
+# end
+# puts("Unique employees = #{uniq_employees}")
+# puts("-------*----------*---------------*----------")
