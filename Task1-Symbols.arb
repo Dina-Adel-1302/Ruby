@@ -1,0 +1,62 @@
+# Symbols Exercise
+# For the symbol :welcome_to_ruby write a program that do the following using Symbol APIs:
+
+# A.Checks whether it starts with ‘wel’ or ‘to’ or ‘zzz’
+#I get ERROR: undefined method `start_with?'
+# symbol = :welcome_to_ruby
+# flag = symbol.start_with?('wel')
+# puts("QuestionA: Does :welcome_to_ruby starts with wel?  #{flag}")
+
+# B.Checks whether it ends with ‘by’ or ‘zy’
+#I get ERROR undefined method `end_with?'
+
+# C.Prints out the next symbol. Ex: :welcome_to_rubz
+puts("QestionC: #{:welcome_to_rubz}")
+
+# D.Prints out the number of letters excluding the special characters.
+String special = ['@', '?', '<', "'", '>', '[', ']', '}', '{', '=', '-', ')', '(', '*', '&', '^', '%', '$', '#', '`', '~', '_']
+flag = false
+special.each do |c|
+    if :moe_salah.to_s.include?(c)
+        # for simplicity, consider that there is only one special character
+        puts("QuestionD: count of :moe_salah excluding the special characters is #{:moe_salah.length-1} ")
+        flag = true
+    end
+end
+unless flag
+    puts("QuestionD: count of :moe_salah is #{:moe_salah.length} ")
+end
+
+# E.Prints out the symbol capitalized then return it back to its original case
+sym = :AbCdEf
+i = 0
+String capitalized = String.new
+
+loop do 
+    capitalized = capitalized + sym.to_s[i].capitalize()
+    i = i + 1
+    if i == sym.length
+        break
+    end
+end
+
+puts("QustionE: symbol = #{sym}, symbol capitalized: #{capitalized}, original symbol: #{sym}")
+
+# F.Print out the symbol converted to string, then print it back as symbol
+symbol = :Ruby
+puts("QuestionF: symbol =  #{symbol}, converted to string: #{symbol.to_s}, original symbol: #{symbol} ")
+
+# G.Create prints an array of symbols out of each letter ex: arr=[:w,:e,:l,:c,:m,:o,....]
+s = "welcome"
+i = 0
+arr = []
+loop do 
+    tmp = s[i]
+    tmp = tmp.to_sym()
+    arr.push(tmp)
+    i += 1
+    if i == s.length
+        break
+    end
+end
+puts("QuestionG: string = #{s}, array of symbols =  #{arr}")
